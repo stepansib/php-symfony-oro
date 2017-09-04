@@ -1,7 +1,7 @@
 FROM php:5.6-fpm
 MAINTAINER Stepan Yudin <stepan.sib@gmail.com>
 
-ENV REFRESHED_AT 2017–08-31
+ENV REFRESHED_AT 2017–09-04
 
 # Install libs
 RUN apt-get update && apt-get install -y \
@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y \
   wget \
   xvfb \
   wkhtmltopdf \
+  mysql-client \
   git
 
 # Install fresh node & npm
