@@ -1,4 +1,4 @@
-FROM php:5.6-fpm
+FROM php:7.1-fpm
 MAINTAINER Stepan Yudin <stepan.sib@gmail.com>
 
 ENV REFRESHED_AT 2017–09-04
@@ -30,6 +30,7 @@ RUN apt-get install -y nodejs \
 
 # Configure PHP extensions
 RUN docker-php-ext-configure intl
+RUN docker-php-ext-configure pcntl
 RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
 
