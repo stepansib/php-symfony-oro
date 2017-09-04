@@ -52,6 +52,15 @@ RUN docker-php-ext-install \
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Install PHPUnit
+RUN wget https://phar.phpunit.de/phpunit.phar
+RUN chmod +x phpunit.phar
+RUN mv phpunit.phar /usr/local/bin/phpunit
+
+# Install Codeception
+RUN curl -LsS http://codeception.com/codecept.phar -o /usr/local/bin/codecept
+RUN chmod a+x /usr/local/bin/codecept
+
 # Configure PHP and FPM
 COPY ./php.ini /usr/local/etc/php/
 COPY php-fpm.conf /etc/php-fpm.conf
