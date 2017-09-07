@@ -5,7 +5,7 @@ This repo is under MIT license. Feel free to do with it whatever you want.
 ### Contents
 
 PHP versions:
-- 5.6-fpm (branch master)
+- 5.6-fpm
 - 7.0-fpm
 - 7.1-fpm
 
