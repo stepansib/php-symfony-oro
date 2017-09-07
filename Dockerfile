@@ -1,4 +1,4 @@
-FROM php:7.1-fpm
+FROM php:5.6-fpm
 MAINTAINER Stepan Yudin <stepan.sib@gmail.com>
 
 ENV REFRESHED_AT 2017–09-04
@@ -62,7 +62,7 @@ RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
 
 # Install Codeception
-RUN curl -LsS http://codeception.com/codecept.phar -o /usr/local/bin/codecept
+RUN curl -LsS http://codeception.com/php5/codecept.phar -o /usr/local/bin/codecept
 RUN chmod a+x /usr/local/bin/codecept
 
 # Configure PHP and FPM
