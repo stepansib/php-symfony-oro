@@ -1,4 +1,4 @@
-## PHP container for Symfony/OroCRM/OroBAP with all dependencies installed and configured
+## PHP container for Symfony/OroCRM/OroBAP
 
 This repo is under MIT license. Feel free to do with it whatever you want.
 
