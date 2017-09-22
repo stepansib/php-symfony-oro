@@ -21,7 +21,8 @@ RUN apt-get update && apt-get install -y \
   xvfb \
   wkhtmltopdf \
   mysql-client \
-  git
+  git \
+  ruby-full
 
 # Install fresh node & npm
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
@@ -47,8 +48,7 @@ RUN docker-php-ext-install \
   soap \
   zip \
   tidy \
-  bcmath \
-  ruby-full
+  bcmath
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
