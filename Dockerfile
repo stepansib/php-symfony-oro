@@ -47,7 +47,8 @@ RUN docker-php-ext-install \
   soap \
   zip \
   tidy \
-  bcmath
+  bcmath \
+  ruby-full
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -64,6 +65,9 @@ RUN mv phpunit.phar /usr/local/bin/phpunit
 # Install Codeception
 RUN curl -LsS http://codeception.com/php5/codecept.phar -o /usr/local/bin/codecept
 RUN chmod a+x /usr/local/bin/codecept
+
+# Install Bundler
+RUN gem install bundler
 
 # Configure PHP and FPM
 COPY ./php.ini /usr/local/etc/php/
