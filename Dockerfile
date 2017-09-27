@@ -68,7 +68,7 @@ RUN chmod a+x /usr/local/bin/codecept
 
 # Install Bundler & configure Ruby gems install command
 RUN gem install bundler
-RUN echo -e "---\ninstall: --user-install" > ~/.gemrc
+#RUN echo -e "---\ninstall: --user-install" > ~/.gemrc
 
 # Configure PHP and FPM
 COPY ./php.ini /usr/local/etc/php/
