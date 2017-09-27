@@ -66,9 +66,9 @@ RUN mv phpunit.phar /usr/local/bin/phpunit
 RUN curl -LsS http://codeception.com/php5/codecept.phar -o /usr/local/bin/codecept
 RUN chmod a+x /usr/local/bin/codecept
 
-# Install Capistrano & Bundler
-RUN gem install capistrano
+# Install Bundler & configure Ruby gems install command
 RUN gem install bundler
+RUN echo -e "---\ninstall: --user-install" > ~/.gemrc
 
 # Configure PHP and FPM
 COPY ./php.ini /usr/local/etc/php/
