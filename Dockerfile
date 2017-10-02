@@ -57,6 +57,15 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
 RUN chmod a+x /usr/local/bin/symfony
 
+# Install PHPUnit
+RUN wget https://phar.phpunit.de/phpunit.phar
+RUN chmod +x phpunit.phar
+RUN mv phpunit.phar /usr/local/bin/phpunit
+
+# Install Codeception
+RUN curl -LsS http://codeception.com/php5/codecept.phar -o /usr/local/bin/codecept
+RUN chmod a+x /usr/local/bin/codecept
+
 # Create Codeception alias
 RUN echo 'alias codecept="./vendor/codeception/codeception/codecept"' >> ~/.bashrc
 RUN . ~/.bashrc
