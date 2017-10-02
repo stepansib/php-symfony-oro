@@ -59,6 +59,7 @@ RUN chmod a+x /usr/local/bin/symfony
 
 # Create Codeception alias
 RUN echo 'alias codecept="./vendor/codeception/codeception/codecept"' >> ~/.bashrc
+RUN . ~/.bashrc
 
 # Install Bundler & configure Ruby gems install command
 RUN gem install bundler
