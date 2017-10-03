@@ -67,8 +67,8 @@ RUN curl -LsS http://codeception.com/php5/codecept.phar -o /usr/local/bin/codece
 RUN chmod a+x /usr/local/bin/codecept
 
 # Create Codeception alias
-RUN echo 'alias codecept="./vendor/codeception/codeception/codecept"' >> ~/.bashrc
-RUN . ~/.bashrc
+#RUN echo 'alias codecept="./vendor/codeception/codeception/codecept"' >> ~/.bashrc
+#RUN . ~/.bashrc
 
 # Install Bundler & configure Ruby gems install command
 RUN gem install bundler
