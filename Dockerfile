@@ -39,6 +39,7 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
 RUN docker-php-ext-install \
   curl \
   intl \
+  pcntl \
   mcrypt \
   gd \
   ldap \
