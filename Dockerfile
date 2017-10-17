@@ -71,6 +71,10 @@ RUN chmod a+x /usr/local/bin/codecept
 #RUN echo 'alias codecept="./vendor/codeception/codeception/codecept"' >> ~/.bashrc
 #RUN . ~/.bashrc
 
+# Install XDebug
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
+
 # Install Bundler & configure Ruby gems install command
 RUN gem install bundler
 #RUN echo -e "---\ninstall: --user-install" > ~/.gemrc
