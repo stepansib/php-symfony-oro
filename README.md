@@ -14,5 +14,6 @@ Tools:
 - Symfony installer
 - PHPUnit
 - Codeception
+- XDebug
 
 Check Dockerfile to get more info about container contents
