@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
   wkhtmltopdf \
   mysql-client \
   git \
+  mc \
   ruby-full
 
 # Install fresh node & npm
