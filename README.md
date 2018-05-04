@@ -14,6 +14,7 @@ Tools:
 - Symfony installer
 - PHPUnit
 - Codeception
-- XDebug
+- XDebug (no config)
+- phpstan (PHP Static Analysis Tool)
 
 Check Dockerfile to get more info about container contents
