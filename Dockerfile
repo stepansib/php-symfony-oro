@@ -76,6 +76,9 @@ RUN chmod a+x /usr/local/bin/codecept
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
 
+# Install PHPStan
+RUN composer global require phpstan/phpstan ^0.9 --prefer-dist
+
 # Disable XDebug
 RUN echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.remote_enable=0" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
