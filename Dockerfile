@@ -78,6 +78,7 @@ RUN docker-php-ext-enable xdebug
 
 # Install PHPStan
 RUN composer global require phpstan/phpstan ^0.9 --prefer-dist
+RUN alias phpstan="/root/.composer/vendor/bin/phpstan"
 
 # Disable XDebug
 RUN echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
