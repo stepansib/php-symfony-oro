@@ -15,6 +15,7 @@ Tools:
 - PHPUnit
 - Codeception
 - XDebug (no config)
-- phpstan (PHP Static Analysis Tool)
+- phpstan
+- PHP CodeSniffer
 
 Check Dockerfile to get more info about container contents
