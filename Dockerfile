@@ -80,7 +80,10 @@ RUN docker-php-ext-enable xdebug
 RUN composer global require phpstan/phpstan ^0.9 --prefer-dist
 
 # Install PHP Code Sniffer
-RUN composer global require "squizlabs/php_codesniffer=*" --prefer-dist
+RUN composer global require squizlabs/php_codesniffer --prefer-dist
+
+# Install PHP MEss Detector
+RUN composer global require phpmd/phpmd --prefer-dist
 
 # Disable XDebug
 RUN echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
