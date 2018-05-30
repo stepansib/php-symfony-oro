@@ -23,7 +23,8 @@ RUN apt-get update && apt-get install -y \
   mysql-client \
   git \
   mc \
-  ruby-full
+  ruby-full \
+  gnupg
 
 # Install fresh node & npm
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
@@ -41,7 +42,6 @@ RUN docker-php-ext-install \
   curl \
   intl \
   pcntl \
-  mcrypt \
   gd \
   ldap \
   opcache \
