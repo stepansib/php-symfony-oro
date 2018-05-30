@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
   libmcrypt-dev \
   libfreetype6-dev \
   libjpeg62-turbo-dev \
-  libpng12-dev \
+  libpng-dev \
   libldap2-dev \
   libxml2-dev \
   libcurl4-openssl-dev \
