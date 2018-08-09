@@ -16,7 +16,6 @@ Tools:
 - Symfony installer
 - PHPUnit
 - Codeception
-- XDebug 
 - phpstan
 - PHP CodeSniffer
 - PHP Mess Detector
