@@ -24,7 +24,10 @@ RUN apt-get update && apt-get install -y \
   git \
   mc \
   ruby-full \
-  gnupg
+  gnupg \
+  iputils-ping \
+  faketime \
+  cron
 
 # Install fresh node & npm
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
