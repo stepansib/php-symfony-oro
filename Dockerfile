@@ -102,10 +102,6 @@ RUN composer global require phpmd/phpmd --prefer-dist
 #    && echo "xdebug.idekey=PHPSTORM" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
 #    && echo "xdebug.remote_connect_back=0" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
-# Install Bundler & configure Ruby gems install command
-RUN gem install bundler
-#RUN echo -e "---\ninstall: --user-install" > ~/.gemrc
-
 # Configure PHP and FPM
 COPY ./php.ini /usr/local/etc/php/
 COPY php-fpm.conf /etc/php-fpm.conf
