@@ -55,6 +55,12 @@ RUN docker-php-ext-install \
   tidy \
   bcmath
 
+#Install freetds & MSSQL driver
+RUN apt-get -y --force-yes --no-install-recommends install freetds-dev
+#RUN docker-php-ext-configure mssql --with-libdir=/lib/x86_64-linux-gnu/
+RUN docker-php-ext-configure pdo_dblib --with-libdir=/lib/x86_64-linux-gnu/
+#RUN docker-php-ext-install -j$(nproc) mssql pdo_dblib
+
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
