@@ -1,7 +1,7 @@
 FROM php:7.2-fpm
 MAINTAINER Stepan Yudin <stepan.sib@gmail.com>
 
-ENV REFRESHED_AT 2018–05-30
+ENV REFRESHED_AT 2018–08-09
 
 # Install libs
 RUN apt-get update && apt-get install -y \
