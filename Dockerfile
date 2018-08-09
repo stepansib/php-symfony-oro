@@ -81,10 +81,6 @@ RUN chmod a+x /usr/local/bin/codecept
 #RUN echo 'alias codecept="./vendor/codeception/codeception/codecept"' >> ~/.bashrc
 #RUN . ~/.bashrc
 
-# Install XDebug
-#RUN pecl install xdebug
-#RUN docker-php-ext-enable xdebug
-
 # Install PHPStan
 RUN composer global require phpstan/phpstan ^0.9 --prefer-dist
 
@@ -93,6 +89,10 @@ RUN composer global require squizlabs/php_codesniffer --prefer-dist
 
 # Install PHP MEss Detector
 RUN composer global require phpmd/phpmd --prefer-dist
+
+# Install XDebug
+#RUN pecl install xdebug
+#RUN docker-php-ext-enable xdebug
 
 # Disable XDebug
 #RUN echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
