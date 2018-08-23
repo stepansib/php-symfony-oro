@@ -29,8 +29,8 @@ RUN apt-get update && apt-get install -y \
   faketime \
   cron
 
-# Install fresh node & npm
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+# Install node & npm
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs \
   build-essential
 
