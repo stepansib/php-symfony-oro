@@ -27,7 +27,10 @@ RUN apt-get update && apt-get install -y \
   gnupg \
   iputils-ping \
   faketime \
-  cron
+  cron \
+  mc \
+  sudo \
+  iputils-ping
 
 # Install node & npm
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
@@ -57,9 +60,8 @@ RUN docker-php-ext-install \
 
 #Install freetds & MSSQL driver
 RUN apt-get -y --force-yes --no-install-recommends install freetds-dev
-#RUN docker-php-ext-configure mssql --with-libdir=/lib/x86_64-linux-gnu/
 RUN docker-php-ext-configure pdo_dblib --with-libdir=/lib/x86_64-linux-gnu/
-#RUN docker-php-ext-install -j$(nproc) mssql pdo_dblib
+RUN docker-php-ext-install -j$(nproc) pdo_dblib
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -77,32 +79,20 @@ RUN mv phpunit.phar /usr/local/bin/phpunit
 RUN curl -LsS http://codeception.com/php5/codecept.phar -o /usr/local/bin/codecept
 RUN chmod a+x /usr/local/bin/codecept
 
-# Create Codeception alias
-#RUN echo 'alias codecept="./vendor/codeception/codeception/codecept"' >> ~/.bashrc
-#RUN . ~/.bashrc
-
 # Install PHPStan
 RUN composer global require phpstan/phpstan ^0.9 --prefer-dist
 
 # Install PHP Code Sniffer
 RUN composer global require squizlabs/php_codesniffer --prefer-dist
 
-# Install PHP MEss Detector
+# Install PHP Mess Detector
 RUN composer global require phpmd/phpmd --prefer-dist
-
-# Install XDebug
-#RUN pecl install xdebug
-#RUN docker-php-ext-enable xdebug
-
-# Disable XDebug
-#RUN echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-#    && echo "xdebug.remote_enable=0" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-#    && echo "xdebug.remote_autostart=0" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-#    && echo "xdebug.remote_port=9000" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-#    && echo "xdebug.idekey=PHPSTORM" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-#    && echo "xdebug.remote_connect_back=0" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 # Configure PHP and FPM
 COPY ./php.ini /usr/local/etc/php/
 COPY php-fpm.conf /etc/php-fpm.conf
 RUN sed -i 's/listen = 127.0.0.1:9000/listen = 9000/' /usr/local/etc/php-fpm.d/www.conf
+
+# Create www-data sudoer user
+RUN adduser www-data sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
