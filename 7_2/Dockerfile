@@ -5,8 +5,6 @@ ENV REFRESHED_AT 2018–08-09
 
 # Install libs
 RUN apt-get update && apt-get install -y \
-  libc-client-dev \
-  libkrb5-dev \
   zlib1g-dev \
   libicu-dev g++ \
   libmcrypt-dev \
@@ -40,8 +38,6 @@ RUN apt-get install -y nodejs \
   build-essential
 
 # Configure PHP extensions
-RUN docker-php-ext-configure imap --with-imap --with-imap-ssl --with-kerberos
-RUN docker-php-ext-install imap
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-configure pcntl
 RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu
