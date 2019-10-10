@@ -1,7 +1,9 @@
 FROM php:7.1-fpm
 MAINTAINER Stepan Yudin <stepan.sib@gmail.com>
 
-ENV REFRESHED_AT 2018–08-09
+# Add repository for PHP MSSQL extension
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+  && curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
 
 # Install libs
 RUN apt-get update && apt-get install -y \
@@ -30,7 +32,23 @@ RUN apt-get update && apt-get install -y \
   cron \
   mc \
   sudo \
-  iputils-ping
+  iputils-ping \
+  faketime \
+  cron \
+  mc \
+  sudo \
+  iputils-ping \
+  supervisor \
+  procps \
+  dos2unix \
+  tzdata \
+  nodejs \
+  build-essential \
+  openssh-client \
+  msodbcsql17 \
+  mssql-tools \
+  unixodbc-dev \
+  openssl
 
 # Install node & npm
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
@@ -108,3 +126,9 @@ RUN curl -fsSLO "$SUPERCRONIC_URL" \
  && chmod +x "$SUPERCRONIC" \
  && mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
  && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic
+
+# Install PHP MSSQL extension
+RUN pecl install sqlsrv pdo_sqlsrv \
+  && docker-php-ext-enable sqlsrv pdo_sqlsrv
+RUN sed -i 's,^\(MinProtocol[ ]*=\).*,\1'TLSv1.0',g' /etc/ssl/openssl.cnf \
+  && sed -i 's,^\(CipherString[ ]*=\).*,\1'DEFAULT@SECLEVEL=1',g' /etc/ssl/openssl.cnf
