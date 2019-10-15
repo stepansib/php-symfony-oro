@@ -1,6 +1,8 @@
 FROM php:7.2-fpm
 MAINTAINER Stepan Yudin <stepan.sib@gmail.com>
 
+RUN apt-get update && apt-get install -y gnupg
+
 # Add repository for PHP MSSQL extension
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
   && curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
@@ -26,7 +28,6 @@ RUN apt-get update && apt-get install -y \
   git \
   mc \
   ruby-full \
-  gnupg \
   iputils-ping \
   faketime \
   cron \
